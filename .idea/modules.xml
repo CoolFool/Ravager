@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/../Ravager/.idea/Ravager.iml" filepath="$PROJECT_DIR$/../Ravager/.idea/Ravager.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../RavagerOld/.idea/RavagerOld.iml" filepath="$PROJECT_DIR$/../RavagerOld/.idea/RavagerOld.iml" />
+    </modules>
+  </component>
+</project>
