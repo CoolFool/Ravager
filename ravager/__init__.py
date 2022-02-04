@@ -1,6 +1,6 @@
 import logging
 import sys
-from .config import LOGS_DIR, LOG_LEVEL
+from ravager.config import LOGS_DIR, LOG_LEVEL
 
 logging.basicConfig(format='"%(asctime)s — %(name)s — %(levelname)s — %(funcName)s:%(lineno)d — %(message)s"',
                     level=LOG_LEVEL,
