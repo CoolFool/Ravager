@@ -13,9 +13,9 @@ class Tasks(Table):
             self.base = Task
             self.tasks = []
             if key is None:
-                self.query = session.query(Task).filter(Task.source_msg_id == self.struct.source_msg_id).first()
+                self.query = session.query(Task).filter(Task.source_msg_id == str(self.struct.source_msg_id)).first()
             else:
-                self.query = session.query(Task).filter(getattr(Task, key) == getattr(self.struct, key)).order_by(
+                self.query = session.query(Task).filter(getattr(Task, key) == str(getattr(self.struct, key))).order_by(
                     asc(Task.id)).all()
             if self.query is None:
                 self.new_row = Task(task_id=self.struct.task_id)
