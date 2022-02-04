@@ -12,7 +12,7 @@ logging.basicConfig(format='"%(asctime)s — %(name)s — %(levelname)s — %(fu
 logger = logging.getLogger(__file__)
 
 aria2c = aria2p.Client(
-    host="http://localhost",
+    host="http://0.0.0.0",
     port=6801,
     secret="qwerty"
 )
