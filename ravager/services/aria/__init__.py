@@ -34,7 +34,7 @@ def start_aria():
     #aria2_command.append("--save-session={}/session.txt".format(LOGS_DIR))
     aria2_command.append("--save-session-interval=20")
     aria2_command.append("--timeout=600")
-    aria2_command.append("--bt-force-encryption=true")
+    aria2_command.append("--bt-force-encryption=false")
     aria2_command.append("--seed-time=0.01")
     aria2_command.append("--log-level=notice")
     aria2_command.append("--bt-stop-timeout=21600")
