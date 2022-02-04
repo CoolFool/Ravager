@@ -3,6 +3,8 @@ import os
 from os.path import dirname
 from dotenv import load_dotenv
 import logging
+from ravager.database.helpers import setup_db
+
 
 logger = logging.getLogger(__file__)
 load_dotenv()
@@ -64,12 +66,9 @@ if __name__ == "__main__":
         logger.info("Database directory created at {}".format(DATABASE_DIR))
     else:
         logger.info("Database directory exists at {}".format(DATABASE_DIR))
-    if DATABASE_URL == DEFAULT_DB_URL:
-        from ravager.database.helpers import setup_db
-        setup_db.create_tables()
-        logger.info("SQLite database created at {}".format(DATABASE_DIR))
-    else:
-        logger.info("SQLite database exist at {}".format(DATABASE_DIR))
-
+    
+    setup_db.create_tables()
+    logger.info("Database setup at {}".format(DATABASE_DIR))
+   
 
 
