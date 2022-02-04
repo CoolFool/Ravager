@@ -1,0 +1,46 @@
+{
+  "name": "RavagerBot",
+  "description": "A bot that sails the high seas and brings treasures from the land unknown",
+  "repository": "https://github.com/CoolFool/ravager",
+  "success_url": "/",
+  "env":{
+    "APP_URL":{
+      "description" : "Heroku app url eg <app_name>.herokuapp.com"
+    },
+    "CLIENT_CONFIG":{
+      "description" : "Google API client secret (Paste the client_secret.json)"
+    },
+    "BOT_TOKEN":{
+      "description" : "Telegram bot API token"
+    },
+    "BOT_URL":{
+      "description" : "Telegram bot url eg https://t.me/<bot_username>"
+    },
+    "STATE_SECRET_KEY":{
+      "description" : "Secret key for generating state secret for oauth",
+      "generator": "secret"
+    },
+    "HEROKU_API_TOKEN":{
+      "description" : "(Optional,Recommended) Heroku api token for getting dyno expiry time and for restarting dynos",
+      "required": false
+    },
+    "KEEP_HEROKU_ALIVE":{
+      "description" : "(Optional,Recommended) Should ravager ping itself in free dynos to prevent auto-shutdown",
+      "value": "true",
+      "required": false
+    },
+    "ALLOWLIST":{
+      "description" : "(Optional,Recommended) Should there be a filter and passwords required for accessing the bot in a group or private chat?",
+      "value": "true",
+      "required": false
+    },
+    "GROUP_PASSWORD":{
+      "description" : "(Optional,Recommended) Password required for accessing and using the bot in a group chat",
+      "required": false
+    },
+    "USER_PASSWORD":{
+      "description" : "(Optional,Recommended) Password required for accessing and using the bot in a private chat",
+      "required": false
+    }
+  }
+}

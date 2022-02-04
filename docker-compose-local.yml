@@ -1,0 +1,38 @@
+version: '3'
+services:
+  ravager:
+    image: 'ravager:latest'
+    container_name: 'ravager'
+    depends_on:
+      - redis
+    ports:
+      - "8443:8443/tcp"
+    environment:
+      - APP_URL=
+      - OAUTH_URL=
+      - CLIENT_CONFIG=${CLIENT_SECRET}
+      - REDIS_URL=redis://@redis
+      - BOT_TOKEN=
+      - STATE_SECRET_KEY=
+      - BOT_URL=
+      - ALLOWLIST=True
+      - GROUP_PASSWORD=
+      - USER_PASSWORD=
+      - PORT=8443
+    volumes:
+      - ./database:/app/database
+      - ./downloads:/app/downloads
+      - ./logs:/app/logs
+    restart: unless-stopped
+
+  redis:
+    image: 'redis:6.2.6-alpine'
+    container_name: 'redis'
+    restart: unless-stopped
+
+networks:
+  default:
+    external: true
+    name: ravager_net
+
+

@@ -10,3 +10,4 @@ class CustomException(Exception):
             return NotImplementedError
         else:
             return NotImplementedError
+

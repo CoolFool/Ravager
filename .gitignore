@@ -1,0 +1,16 @@
+.*
+**/.*
+ravager/.env
+!/.gitignore
+!/.dockerignore
+ravager/db_test_snippets.py
+ravager/test_snippets.py
+downloads/
+logs/
+database/
+celerybeat-schedule
+ravager/services/mega
+ravager/conversation
+client_secret.json
+docker-compose-dev.yml
+docker-compose-local-dev.yml

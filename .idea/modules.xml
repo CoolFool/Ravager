@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/../Ravager/.idea/Ravager.iml" filepath="$PROJECT_DIR$/../Ravager/.idea/Ravager.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../RavagerOld/.idea/RavagerOld.iml" filepath="$PROJECT_DIR$/../RavagerOld/.idea/RavagerOld.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Ravager.iml" filepath="$PROJECT_DIR$/.idea/Ravager.iml" />
     </modules>
   </component>
 </project>
