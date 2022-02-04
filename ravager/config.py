@@ -24,6 +24,8 @@ try:
     OAUTH_URL = str(os.environ.get("OAUTH_URL", APP_URL))
     CLIENT_CONFIG = ast.literal_eval(os.environ["CLIENT_CONFIG"])
     DATABASE_URL = str(os.environ.get("DATABASE_URL", DEFAULT_DB_URL))
+    if DATABASE_URL and DATABASE_URL.startswith("postgres://"):
+        DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql://", 1)
     REDIS_URL = str(os.environ["REDIS_URL"])
     BOT_TOKEN = str(os.environ["BOT_TOKEN"])
     STATE_SECRET_KEY = str(os.environ["STATE_SECRET_KEY"])
@@ -42,12 +44,6 @@ try:
     STORAGE_TIME = int(os.environ.get("STORAGE_TIME", 0))
     if HEROKU_APP and DATABASE_URL == DEFAULT_DB_URL:
         raise SystemError("SQLite not allowed on Heroku")
-    if HEROKU_APP:
-        import os
-        import re
-        uri = os.getenv("DATABASE_URL") 
-        if uri.startswith("postgres://"):
-            uri = uri.replace("postgres://", "postgresql://", 1)
 except KeyError as e:
     logger.error("{} ENV VAR Not Found".format(e))
     raise SystemError("Setup the bot properly")
