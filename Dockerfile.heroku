@@ -42,6 +42,6 @@ COPY --from=builder-base $VENV_PATH $VENV_PATH
 COPY ./ravager /app/ravager
 COPY start.sh /app
 WORKDIR /app
-ENV PYTHONPATH="${PYTHONPATH}:/app"
-ENV HEROKU_APP="true"
+ENV PYTHONPATH "${PYTHONPATH}:/app"
+ENV HEROKU_APP "true"
 CMD ["./start.sh"]
