@@ -3,6 +3,9 @@ from sqlalchemy.types import PickleType
 from sqlalchemy.ext.mutable import MutableList, MutableDict
 from sqlalchemy.ext.declarative import declarative_base
 from ravager.database import engine
+import logging
+
+logger = logging.getLogger(__file__)
 
 Base = declarative_base()
 

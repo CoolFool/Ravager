@@ -5,8 +5,9 @@ from ravager.config import DATABASE_URL
 
 logger = logging.getLogger(__file__)
 
+setup_db.create_tables()
+logger.info("Database setup at {}".format(DATABASE_URL))
+
 logger.info(Tasks().clear())
 
     
-setup_db.create_tables()
-logger.info("Database setup at {}".format(DATABASE_URL))
