@@ -8,7 +8,7 @@ from telegram import Bot
 from ravager.config import BOT_TOKEN
 from ravager.database.helpers.structs import OpsDataStruct
 from ravager.database.tasks import Tasks
-from ravager.services.aria import aria2c, aria2, start_aria
+from ravager.services.aria import aria2c, aria2
 from ravager.services.aria.updater import Updater
 from ravager.services.google.helpers import uploader
 
