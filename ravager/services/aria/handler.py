@@ -90,10 +90,7 @@ def signal_handler(s, frame):
 
 if __name__ == "__main__":
     signal.signal(signal.SIGINT, signal_handler)
-
-    start_aria()
     bot = Bot(token=BOT_TOKEN)
-    logger.info("aria2c started")
     aria2.listen_to_notifications(threaded=True,
                                   on_download_start=start,
                                   on_download_complete=complete,
