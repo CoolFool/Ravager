@@ -1,8 +1,9 @@
 {
   "name": "RavagerBot",
   "description": "A bot that sails the high seas and brings treasures from the land unknown",
-  "repository": "https://github.com/CoolFool/ravager",
+  "repository": "https://github.com/CoolFool/Ravager",
   "success_url": "/",
+  "stack":"container",
   "env":{
     "APP_URL":{
       "description" : "Heroku app url eg <app_name>.herokuapp.com"
