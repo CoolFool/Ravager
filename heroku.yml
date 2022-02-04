@@ -1,9 +1,9 @@
 setup:
   addons:
     - plan: heroku-postgresql:hobby-dev
-      as: DATABASE_URL
+      as: DATABASE
     - plan: heroku-redis:hobby-dev
-      as: REDIS_URL
+      as: REDIS
 build:
   docker:
     web: Dockerfile.heroku

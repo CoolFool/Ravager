@@ -42,6 +42,12 @@ try:
     STORAGE_TIME = int(os.environ.get("STORAGE_TIME", 0))
     if HEROKU_APP and DATABASE_URL == DEFAULT_DB_URL:
         raise SystemError("SQLite not allowed on Heroku")
+    if HEROKU_APP:
+        import os
+        import re
+        uri = os.getenv("DATABASE_URL") 
+        if uri.startswith("postgres://"):
+            uri = uri.replace("postgres://", "postgresql://", 1)
 except KeyError as e:
     logger.error("{} ENV VAR Not Found".format(e))
     raise SystemError("Setup the bot properly")
