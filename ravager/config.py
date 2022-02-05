@@ -49,23 +49,6 @@ except KeyError as e:
     logger.error("{} ENV VAR Not Found".format(e))
     raise SystemError("Setup the bot properly")
 
-if __name__ == "__main__":
-    if not os.path.exists(LOGS_DIR):
-        os.mkdir(LOGS_DIR)
-        logger.info("Logs directory created at {}".format(LOGS_DIR))
-    else:
-        logger.info("Logs directory exists at {}".format(LOGS_DIR))
-    if not os.path.exists(DOWNLOAD_DIR):
-        os.mkdir(DOWNLOAD_DIR)
-        logger.info("Downloads directory created at {}".format(DOWNLOAD_DIR))
-    else:
-        logger.info("Downloads directory exists at {}".format(DOWNLOAD_DIR))
-    if not HEROKU_APP:
-        if not os.path.exists(DATABASE_DIR):
-            os.mkdir(DATABASE_DIR)
-            logger.info("Database directory created at {}".format(DATABASE_DIR))
-        else:
-            logger.info("Database directory exists at {}".format(DATABASE_DIR))
 
    
 

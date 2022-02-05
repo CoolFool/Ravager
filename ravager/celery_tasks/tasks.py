@@ -21,7 +21,7 @@ def setup_periodic_tasks(sender, **kwargs):
     )
     if HEROKU_APP and KEEP_HEROKU_ALIVE:
         sender.add_periodic_task(
-            crontab(minute='*/15'),
+            crontab(minute='*/5'),
             keep_heroku_alive.s(),
             name="keep heroku free dyno alive"
         )
