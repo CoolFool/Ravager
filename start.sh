@@ -1,5 +1,6 @@
 #!/bin/bash
 cd ravager
+python config.py
 python housekeeping.py
 python services/aria/handler.py &
 P1=$!

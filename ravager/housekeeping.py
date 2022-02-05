@@ -1,12 +1,16 @@
 from ravager.database.tasks import Tasks
 import logging
 from ravager.database.helpers import setup_db
-from ravager.config import DATABASE_URL, LOGS_DIR, DOWNLOAD_DIR, HEROKU_APP, DATABASE_DIR
+from ravager.config import DATABASE_URL, LOGS_DIR
 from ravager.helpers.check_process import Process
 from subprocess import check_call
-import os
 
 logger = logging.getLogger(__file__)
+
+setup_db.create_tables()
+logger.info("Database setup at {}".format(DATABASE_URL))
+
+logger.info(Tasks().clear())
 
 
 def start_aria():
@@ -41,29 +45,6 @@ def start_aria():
         check_call(aria2_command)
     return True
 
-
-if not os.path.exists(LOGS_DIR):
-    os.mkdir(LOGS_DIR)
-    logger.info("Logs directory created at {}".format(LOGS_DIR))
-else:
-    logger.info("Logs directory exists at {}".format(LOGS_DIR))
-if not os.path.exists(DOWNLOAD_DIR):
-    os.mkdir(DOWNLOAD_DIR)
-    logger.info("Downloads directory created at {}".format(DOWNLOAD_DIR))
-else:
-    logger.info("Downloads directory exists at {}".format(DOWNLOAD_DIR))
-if not HEROKU_APP:
-    if not os.path.exists(DATABASE_DIR):
-        os.mkdir(DATABASE_DIR)
-        logger.info("Database directory created at {}".format(DATABASE_DIR))
-    else:
-        logger.info("Database directory exists at {}".format(DATABASE_DIR))
-
-setup_db.create_tables()
-logger.info("Database is setup at {}".format(DATABASE_URL))
-
-logger.info(Tasks().clear())
-logger.info("Cleared tasks entries in {} database on startup".format(DATABASE_URL))
 
 logger.info(start_aria())
 logger.info("aria2c started")
