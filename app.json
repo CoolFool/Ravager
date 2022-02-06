@@ -5,7 +5,7 @@
   "stack":"container",
   "env":{
     "APP_URL":{
-      "description" : "Heroku app url eg <app_name>.herokuapp.com"
+      "description" : "Heroku app url eg https://<app_name>.herokuapp.com"
     },
     "CLIENT_CONFIG":{
       "description" : "Google API client secret (Paste the client_secret.json)"
