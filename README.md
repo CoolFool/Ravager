@@ -127,6 +127,10 @@ To run this project, you will need to set the following environment variables :
 
 ## Heroku
 - Click [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/coolfool/ravager) and fill the environment variables accordingly. 
+- If the addons section is empty in the app dashboard on heroku add the following addons:
+   - Heroku Postgres with plan Hobby-Dev:Free
+   - Heroku Redis with plan Hobby-Dev:Free
+- Restart the app
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## Docker
