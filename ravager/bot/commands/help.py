@@ -21,5 +21,5 @@ class Help:
         update.message.reply_text(quote=True, text=help_text, parse_mode=ParseMode.MARKDOWN_V2)
 
     def help_handler(self):
-        help_handler = CommandHandler("upload", self.help)
+        help_handler = CommandHandler("help", self.help)
         return help_handler

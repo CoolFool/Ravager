@@ -39,16 +39,13 @@ To run this project, you will need to set the following environment variables :
     <ul>
         <details>
             <summary>APP_URL</summary>
-            <p></p>
+            <p>The url where the app will be hosted i.e for heroku it will be 
+            </p>
         </details>
         <details> 
             <summary>CLIENT_CONFIG</summary>
             <p></p>
         </details>
-        <details>
-            <summary>REDIS_URL</summary>
-            <p></p>
-        </details> 
         <details>
             <summary>BOT_TOKEN</summary>
             <p></p>
