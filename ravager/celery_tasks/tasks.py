@@ -15,7 +15,7 @@ app.conf.broker_pool_limit = 0
 @app.on_after_finalize.connect
 def setup_periodic_tasks(sender, **kwargs):
     sender.add_periodic_task(
-        crontab(minute=0, hour='*/3'),
+        crontab(minute=0, hour='*/4'),
         clean_database.s(),
         name="clear_finished_downloads"
     )

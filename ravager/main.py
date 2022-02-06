@@ -23,6 +23,7 @@ from ravager.bot.commands.upload import Upload
 from ravager.bot.commands.abort import Abort
 from ravager.bot.helpers.abort_upload_handler import AbortAndUpload
 from ravager.bot.commands.admin_interface import AdminInterface
+from ravager.bot.commands.help import Help
 from ravager.bot.commands.unknown import Unknown
 from ravager.bot.commands.error import error_handler
 from ravager.config import APP_URL, BOT_TOKEN, CLIENT_CONFIG, PORT, BOT_URL, OAUTH_URL, ROOT_DIR, LOGS_DIR
@@ -126,6 +127,7 @@ def setup():
     revoke = Revoke()
     upload = Upload()
     abort = Abort()
+    help_cmd = Help()
     abort_upload_callback = AbortAndUpload()
     admin_interface = AdminInterface()
     unknown = Unknown()
@@ -137,6 +139,7 @@ def setup():
     dispatcher.add_handler(revoke.revoke_callback_handler())
     dispatcher.add_handler(upload.upload_handler())
     dispatcher.add_handler(abort.abort_handler())
+    dispatcher.add_handler(help_cmd.help_handler())
     dispatcher.add_handler(admin_interface.admin_interface_handler())
     dispatcher.add_handler(abort_upload_callback.upload_callback_handler())
     dispatcher.add_handler(abort_upload_callback.abort_callback_handler())
