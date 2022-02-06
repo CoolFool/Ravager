@@ -1,15 +1,15 @@
 from telegram.ext import CommandHandler
 from telegram import ParseMode
 
-help_text = "**Ravager Bot Commands**\n" \
-            "/start : `Start the authorization flow for google drive access`\n" \
-            "/add_drive : `Set default drive either personal or shared drive through the menu`\n" \
-            "/download : `Add download task`\n" \
-            "/upload : `If a download fails you can reply to the source message or just upload manually`\n" \
-            "/abort : `Abort an ongoing task`\n" \
-            "/admin_interface : `Admin interface access only available in private chat and for admins`\n" \
-            "/revoke : `Revoke and delete your google account on the bot`\n" \
-            "/help : `See all the commands`"
+help_text = "*Ravager Bot Commands* \n" \
+            "/start : Start the authorization flow for google drive access\n" \
+            "/add\_drive : Set default drive either personal or shared drive through the menu\n" \
+            "/download : Add download task\n" \
+            "/upload : If a download fails you can reply to the source message or just upload manually\n" \
+            "/abort : Abort an ongoing task\n" \
+            "/admin\_interface : Admin interface access only available in private chat and for admins\n" \
+            "/revoke : Revoke and delete your google account on the bot\n" \
+            "/help : See all the commands"
 
 
 class Help:
