@@ -22,7 +22,7 @@ for downloading the content and uploads it to google drive. It can be deployed t
 ## Features
 
 - Easy-to-use heroku one click deploy
-- Support for multiple google accounts and telegram chats (group and private)
+- Support for multiple telegram chats (group and private) with google accounts with built-in oauth support
 - Preserves the directory structure of uploaded content and doesn't require any archiving.
 - Support for Personal and Shared Drive and changing them on the fly
 - Flexible in terms deploying and installing options
@@ -40,35 +40,43 @@ To run this project, you will need to set the following environment variables :
         <details>
             <summary>APP_URL</summary>
             <p>The url where the app will be hosted i.e for heroku it will be 
-            </p>
+            https://{appname}.herokuapp.com or for self-hosted server it will be
+            https://{hostname_or_ip}:{port} where port is usally 8443</p>
         </details>
         <details> 
             <summary>CLIENT_CONFIG</summary>
-            <p></p>
+            <p>
+                The client_secret.json from Google Oauth Client ID with /auth/drive and /auth/drive.metadata scopes <br>
+                The URLs added to authorized domains should be your APP_URL and APP_URL/oauth_handler
+                For more info on how to setup Oauth Client visit <a href="https://developers.google.com/drive/api/v3/about-auth">Official Google Docs</a>
+            </p>
         </details>
         <details>
             <summary>BOT_TOKEN</summary>
-            <p></p>
+            <p>The bot token for telegram bot, for more info on how to create a bot and get
+            a token visit <a href="https://core.telegram.org/bots#3-how-do-i-create-a-bot">How to create a telegram bot</a></p>
         </details>
         <details>
             <summary>STATE_SECRET_KEY</summary>
-            <p></p>
+            <p>A random alphanumeric text used as a salt in generating state for oauth authorization. <br>
+           Not required in heroku caused generator is used while deploying</p>
         </details>
         <details>
             <summary>BOT_URL</summary>
-            <p></p>
+            <p>The telegram bot url,this is usually in the form https://t.me/{bot_username}</p>
         </details>
         <details>
             <summary>ALLOWLIST</summary>
-            <p></p>
+            <p>Should there be a filter where password is required for access to the bot <br>
+                Set as "True" or "False"</p>
         </details>
         <details>
             <summary>GROUP_PASSWORD</summary>
-            <p></p>
+            <p>Password used for allowing a group chat access to the bot,should be set if "ALLOWLIST" is enabled</p>
         </details>
         <details>
             <summary>USER_PASSWORD</summary>
-            <p></p>
+            <p>Password used for allowing a user access to the bot,should be set if "ALLOWLIST" is enabled</p>
         </details> 
     </ul>
 </details>
@@ -77,11 +85,15 @@ To run this project, you will need to set the following environment variables :
     <ul>
     <details>
         <summary>KEEP_HEROKU_ALIVE</summary>
-        <p></p>
+        <p> The application hosted in heroku free dyno sleeps after 20 minutes of no activity,to conteract this the application
+        can ping itself every 5 minutes and keep itself alive.<br>Should be set to either "True" or "False"
+        </p>
     </details>
     <details>
         <summary>HEROKU_API_TOKEN</summary>
-        <p></p>
+        <p>Heroku dynos are restarted every 24 hours + random(0-216)minutes,but if there is a restart before that the restart time is reset.
+        The bot can give you the approx restart time and restart itself when no activity occurs for 4 hours if it has the Platform API Token<br>
+        The token can be found <a href="https://dashboard.heroku.com/account">here</a></p>
     </details>
     </ul>
 </details>
@@ -89,24 +101,21 @@ To run this project, you will need to set the following environment variables :
     <summary>Optional Environment Variables</summary>
     <ul>
         <details>
-        <summary>OAUTH_URL</summary>
-        <p></p>
-        </details>
-        <details>
         <summary>DATABASE_URL</summary>
-        <p></p>
+        <p>The DATABASE URI for custom SQL Database</p>
         </details>
         <details>
         <summary>REDIS_URL</summary>
-        <p></p>
+        <p>The URL for connecting to custom redis instance</p>
         </details>
         <details>
         <summary>LOG_LEVEL</summary>
-        <p></p>
+        <p>The log level to be displayed in console,all the log levels can be found <a href="https://docs.python.org/3/library/logging.html#logging-levels">here</a><br>
+        Only numeric value is supported</p>
         </details>
         <details>
         <summary>PORT</summary>
-        <p></p>
+        <p>Custom port for hosting the application,but only Ports supported by telegram should be used when the application is not hosted behind a reverse proxy</p>
         </details>
     </ul>
 </details>
