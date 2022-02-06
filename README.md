@@ -132,7 +132,7 @@ To run this project, you will need to set the following environment variables :
 ## Docker
 
 - ### Docker Compose
-    1) Download [docker-compose.yml]() for running on a server or [docker-compose-local.yml]() for running locally with ngrok or other tunneling service for oauth authentication
+    1) Download [docker-compose.yml](https://github.com/CoolFool/Ravager/blob/main/docker-compose.yml) for running on a server or [docker-compose-local.yml](https://github.com/CoolFool/Ravager/blob/main/docker-compose-local.yml) for running locally with ngrok or other tunneling service for oauth authentication
     2) Open the file in a text editor and fill the environment variables
     3) - If `docker-compose-local.yml` is used you have to create a docker network called `ravager_net`
        - Forward the connection for `ravager_net` with port `8443` using ngrok or some other tunneling service.
