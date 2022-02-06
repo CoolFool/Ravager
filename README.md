@@ -10,6 +10,7 @@
 - [Installation](#Installation)
   - [Heroku](#Heroku)
   - [Docker](#Docker)
+- [Bot Commands](#Telegram-Bot-Commands)
 - [Contributing](#Contributing)
 - [Authors](#Authors)
 - [License](#License)
@@ -22,7 +23,7 @@ for downloading the content and uploads it to google drive. It can be deployed t
 ## Features
 
 - Easy-to-use heroku one click deploy
-- Support for multiple telegram chats (group and private) with google accounts with built-in oauth support
+- Support for multiple telegram chats (group and private) and Google accounts with built-in oauth support
 - Preserves the directory structure of uploaded content and doesn't require any archiving.
 - Support for Personal and Shared Drive and changing them on the fly
 - Flexible in terms deploying and installing options
@@ -151,6 +152,16 @@ To run this project, you will need to set the following environment variables :
     5) The bot should be up and running
     6) For checking the logs you can use `docker logs -f ravager`
 <p align="right">(<a href="#top">back to top</a>)</p>
+    
+## Telegram Bot Commands
+- `/start` : Start the authorization flow for google drive access
+- `/add_drive` : Set default drive either personal or shared drive through the menu
+- `/download` : Add download task
+- `/upload` : Upload content if a download fails you can reply to the source message or upload multiple times
+- `/abort` : Abort an ongoing task
+- `/admin_interface` : Admin interface access (only available in private chat and for admins)
+- `/revoke` : Revoke and delete your Google account on the bot
+- `/help` : See all the commands
 
 ## Contributing
 
