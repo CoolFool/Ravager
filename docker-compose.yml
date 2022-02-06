@@ -10,7 +10,7 @@ services:
     environment:
       - APP_URL=
       - OAUTH_URL=
-      - CLIENT_CONFIG=${CLIENT_SECRET}
+      - CLIENT_CONFIG=
       - REDIS_URL=redis://@redis
       - BOT_TOKEN=
       - STATE_SECRET_KEY=
