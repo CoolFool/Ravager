@@ -7,7 +7,7 @@ help_text = "*Ravager Bot Commands* \n" \
             "/download : Add download task\n" \
             "/upload : Upload content if a download fails by replying to the source message or upload multiple times\n"\
             "/abort : Abort an ongoing task\n" \
-            "/admin\_interface : Admin interface access (only available in private chat and for admins)\n" \
+            "/admin\_interface : Admin interface access \(only available in private chat and for admins\)\n" \
             "/revoke : Revoke and delete your google account on the bot\n" \
             "/help : See all the commands"
 
