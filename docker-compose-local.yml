@@ -1,7 +1,7 @@
 version: '3'
 services:
   ravager:
-    image: 'ravager:latest'
+    image: 'coolfool/ravager:latest'
     container_name: 'ravager'
     depends_on:
       - redis
