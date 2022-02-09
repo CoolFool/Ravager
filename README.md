@@ -30,6 +30,7 @@ for downloading the content and uploads it to google drive. It can be deployed t
 - Single multi-arch docker image
 - Recover from failed upload
 - Download once upload multiple times
+- Admin interface for getting logs and other system info
 - Multiple optimisations for running on heroku free dyno
 
 

@@ -25,7 +25,6 @@ def start_aria():
     aria2_command.append("--rpc-listen-port=6801")
     aria2_command.append("--rpc-secret=qwerty")
     aria2_command.append("--save-session={}/session.txt".format(LOGS_DIR))
-    aria2_command.append("--input-file={}/session.txt".format(LOGS_DIR))
     aria2_command.append("--log={}/aria2.log".format(LOGS_DIR))
     aria2_command.append("--save-session-interval=20")
     aria2_command.append("--timeout=600")
