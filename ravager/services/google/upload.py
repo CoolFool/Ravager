@@ -83,6 +83,8 @@ class Upload:
                     return
             except Exception as e:
                 logger.error(e)
+                self.bot.send_message(chat_id=user_id, text=str(e),
+                                      reply_to_message_id=source_msg_id)
                 return "Error occurred while checking space"
 
         # Add check if resuming i.e. notify user that the bot is resuming

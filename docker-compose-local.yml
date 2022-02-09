@@ -9,7 +9,6 @@ services:
       - "8443:8443/tcp"
     environment:
       - APP_URL=
-      - OAUTH_URL=
       - CLIENT_CONFIG=
       - REDIS_URL=redis://@redis
       - BOT_TOKEN=
