@@ -65,6 +65,7 @@ def oauth_handler():
         print(creds)
     except Exception as e:
         logger.error(e)
+        UserData().delete_user("state", state)
         bot.send_message(chat_id=chat_id, text="Authorization Failed,Revoke access from google account if authorized")
         return redirect(BOT_URL)
 
@@ -77,9 +78,9 @@ def oauth_handler():
     except Exception as e:
         logger.error(e)
         logger.info(user)
+        UserData().delete_user("state", state)
         bot.send_message(chat_id=chat_id,
                          text="Authorization Failed,Revoke access from google account if authorized")
-
         return redirect(BOT_URL)
 
 
