@@ -149,7 +149,7 @@ class Download:
                                   MessageHandler(Filters.text, self.invalid_data_handler),
                                   MessageHandler(Filters.document, self.invalid_data_handler)],
 
-                MAGNET_HANDLER: [MessageHandler(Filters.regex(r"^magnet:\?xt=urn:[a-z0-9]+:[a-z0-9].+&dn=.+"),
+                MAGNET_HANDLER: [MessageHandler(Filters.regex(r"^magnet:\?xt=urn:[a-zA-Z0-9]+:[a-zA-Z0-9].+&dn=.+"),
                                                 partial(self.source_handler, data="magnet_uri")),
                                  MessageHandler(Filters.text, self.invalid_data_handler)],
 
