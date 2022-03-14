@@ -1,6 +1,6 @@
 <div align="center" id = "top">
   <img src="ravager.png"  alt="ravager logo"/>
-  <h3>A telegram bot that sails the high seas and brings treasures from the land unknown</h3> 
+  <h3>A bot that downloads content in the form of torrent and direct download links and mirrors them 1:1 to google drive</h3> 
 </div>
 
 ## Contents
