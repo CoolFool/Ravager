@@ -4,7 +4,6 @@ from os.path import dirname
 from dotenv import load_dotenv
 import logging
 
-
 logger = logging.getLogger(__file__)
 load_dotenv()
 """
@@ -66,7 +65,3 @@ if __name__ == "__main__":
             logger.info("Database directory created at {}".format(DATABASE_DIR))
         else:
             logger.info("Database directory exists at {}".format(DATABASE_DIR))
-
-   
-
-

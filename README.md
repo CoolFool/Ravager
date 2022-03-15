@@ -47,11 +47,48 @@ To run this project, you will need to set the following environment variables :
         </details>
         <details> 
             <summary>CLIENT_CONFIG</summary>
-            <p>
-                The client_secret.json from Google Oauth Client ID with /auth/drive and /auth/drive.metadata scopes <br>
-                The URLs added to authorized domains should be your APP_URL and APP_URL/oauth_handler
-                For more info on how to setup Oauth Client visit <a href="https://developers.google.com/drive/api/v3/about-auth">Official Google Docs</a>
-            </p>
+                <ol>
+                    <h4>To create a Google Cloud project:</h4>
+                    <ol>
+                        <li>Open the <a href="https://console.cloud.google.com/">Google Cloud Console.</a></li>
+                        <li>At the top-left, click Menu > <b>IAM & Admin</b> > <b>Create a Project.</b></li>
+                        <li>In the <b>Project Name</b> field, enter a descriptive name for your project.<br>
+                            Optional: To edit the <b>Project ID</b>, click <b>Edit</b>. The project ID can't be changed after the project is created, so choose an ID that meets your needs for the lifetime of the project.<br>
+                            In the <b>Location</b> field, click <b>Browse</b> to display potential locations for your project. Then, click <b>Select</b></li>
+                        <li>Click <b>Create.</b> The console navigates to the Dashboard page and your project is created within a few minutes.
+                    </ol>
+                    <h4>Configure the Project:</h4>
+                    <ol>
+                        <li>Open the <a href="https://console.cloud.google.com/home/dashboard">Google Cloud Console Dashboard</a> and select your project</li>
+                        <li>At the top-left, click Menu > <b>APIs & Services</b> </li>
+                        <li>On the left side menu,Select <b>Library/</b></li>
+                        <li>Search for <b>Google Drive</b> in the search bar the API library and Select and <b>Enable Google Drive API</b></li>
+                        <li>Again at the top-left, click Menu > <b>APIs & Services</b> </li>
+                        <li>On the left side menu,Select <b>Credentials</b>, select <b>Create credentials</b>, then <b>OAuth client ID</b>.</li>
+                        <li>You may be prompted to set a product name on the <b>Consent screen</b>; if so, click <b>Configure consent screen</b>, supply the requested information following the notes below, and click Save to return to the Credentials screen</li>
+                        <h4>OAuth consent screen Configuration: </h4>
+                            <ol>
+                                <li>Select user type as <b>external</b></li>
+                                <li>Fill the required details</li>
+                                <li>In the scopes page,Click on <b>Add or Remove Scopes</b></li>
+                                <li>Search and Add <b>/auth/drive</b> and <b>/auth/drive.metadata</b> scopes and click on update</li>
+                                <li>You should see the scopes added in <b>Your Sensitive Scopes</b> Section</li>
+                                <li>Click on <b>Save and Continue</b> for rest of the sections</li>
+                                <li>On the OAuth consent screen Click on <b>Publish App</b> and <b>Confirm</b></li>
+                                <li>Ignore Needs verification warning for the time being,the users will only see the warning while authorizing but please note there's a limit to number of users for unverified apps</li>
+                            </ol>
+                        <li>Again On the left side menu,select <b>Credentials</b> and then select <b>Create credentials</b>, then <b>OAuth client ID</b></li>
+                        <li>Select Web Application for the Application Type. Follow the instructions to enter JavaScript origins, redirect URIs, or both.
+                            <ol>
+                                <li>In <b>Javascript Origins</b> add your domain name which should be <b>APP_URL</b></li>
+                                <li>In <b>Authorized redirect URIs</b> Add your redirect uri which should be <b>APP_URL/oauth_handler</b></li>
+                            </ol>
+                        </li>
+                        <li>Click <b>Create.</b></li>
+                        <li>Download your client_secret.json from the popup modal or from under OAuth 2.0 Client IDs</li>
+                        <li><b>Open</b> client_secret.json and <b>copy</b> the whole config as CLIENT_CONFIG</li>
+                    </ol>
+                </ol>
         </details>
         <details>
             <summary>BOT_TOKEN</summary>
