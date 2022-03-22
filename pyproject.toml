@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "ravager"
 version = "1.0.1"
-description = "A bot that sails the high seas and brings treasures from the land unknown"
+description = "A telegram bot that downloads content in the form of torrent and direct download links and mirrors them 1:1 to google drive"
 authors = ["Aseem Manna <coolfool149@gmail.com>"]
 exclude = ["ravager/.*","ravager/*snippets.py","ravager/services/mega"]
 
