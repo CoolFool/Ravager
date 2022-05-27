@@ -36,7 +36,7 @@ for downloading the content and uploads it to google drive. It can be deployed t
 
 ## Environment Variables
 To run this project, you will need to set the following environment variables :
-<details>
+<details open>
     <summary>Core Environment Variables</summary>
     <ul>
         <details>
@@ -119,7 +119,7 @@ To run this project, you will need to set the following environment variables :
         </details> 
     </ul>
 </details>
-<details>
+<details open>
     <summary>Environment Variables for Heroku only</summary>
     <ul>
     <details>
@@ -136,7 +136,7 @@ To run this project, you will need to set the following environment variables :
     </details>
     </ul>
 </details>
-<details>
+<details open>
     <summary>Optional Environment Variables</summary>
     <ul>
         <details>
