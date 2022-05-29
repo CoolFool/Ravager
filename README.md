@@ -180,7 +180,7 @@ To run this project, you will need to set the following environment variables :
     3) - If `docker-compose-local.yml` is used you have to create a docker network called `ravager_net`
        - Forward the connection for `ravager_net` with port `8443` using ngrok or some other tunneling service.
        - Get the ip for `ravager_net` using the command `docker inspect ravager_net`
-       - For ngrok the command should be as follows: `./ngrok https <ravager_net_ip>:8443`
+       - For ngrok the command should be as follows: `./ngrok http <ravager_net_ip>:8443`
        - The url from ngrok will be used as telegram bot webhook and oauth endpoint
        - Add the ngrok url and the oauth endpoint `ngrok_url/oauth_handler` to google's oauth api authorized domain.
     4) Execute the following command in the same directory

@@ -33,7 +33,7 @@ RUN poetry install --no-dev  # respects
 
 FROM python-base as production
 RUN apt-get update \
-  && apt-get install --no-install-recommends -y aria2 \
+  && apt-get install --no-install-recommends -y aria2 curl \
   && apt-get clean \
   && apt-get autoremove \
   && rm -rf /var/lib/apt/lists/*  \
@@ -41,7 +41,9 @@ RUN apt-get update \
 COPY --from=builder-base $VENV_PATH $VENV_PATH
 COPY ./ravager /app/ravager
 COPY start.sh /app
+COPY healthcheck.sh /app
 WORKDIR /app
 ENV PYTHONPATH="${PYTHONPATH}:/app"
 ENV HEROKU_APP="true"
+HEALTHCHECK --interval=1m --timeout=3s CMD ["/app/healthcheck.sh"]
 CMD ["./start.sh"]

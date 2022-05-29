@@ -201,10 +201,10 @@ class AdminInterface:
             bytes_recvd = humanize(net.bytes_recv)
             total_disk_space = humanize(disk_usage.total)
             total_free_space = humanize(disk_usage.free)
-            text = sys_info_text.format(cpu_percent, used_mem.size, used_mem.suffix, available_mem.size, available_mem.suffix,
-                                        bytes_recvd.size, bytes_recvd.suffix, bytes_sent.size, bytes_sent.suffix,
-                                        total_disk_space.size, total_disk_space.suffix, total_free_space.size,
-                                        total_free_space.suffix)
+            text = sys_info_text.format(cpu_percent, used_mem.size, used_mem.unit, available_mem.size, available_mem.unit,
+                                        bytes_recvd.size, bytes_recvd.unit, bytes_sent.size, bytes_sent.unit,
+                                        total_disk_space.size, total_disk_space.unit, total_free_space.size,
+                                        total_free_space.unit)
             update.callback_query.edit_message_text(text=text, parse_mode=ParseMode.MARKDOWN,
                                                     reply_markup=self.last_step_btns(prev_menu="admin|admin_sys_info"))
             return SYS_INFO_PANEL

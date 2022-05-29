@@ -79,13 +79,14 @@ def check_celery_queue(*dargs, **dkwargs):
         def wrapper(self, update, context, *args, **kwargs):
             i = app.control.inspect()
             reserved = i.reserved()
-            worker_name = list(reserved.keys())[0]
-            reserved_tasks = len(reserved[worker_name])
-            if reserved_tasks >= 4:
-                update.message.reply_text(quote=True, text="Too many tasks in queue,try again later")
-                if "is_convo" in dkwargs:
-                    return END
-                return
+            if reserved is not None:
+                worker_name = list(reserved.keys())[0]
+                reserved_tasks = len(reserved[worker_name])
+                if reserved_tasks >= 4:
+                    update.message.reply_text(quote=True, text="Too many tasks in queue,try again later")
+                    if "is_convo" in dkwargs:
+                        return END
+                    return
             return handlers(self, update, context, *args, *kwargs)
 
         return wrapper

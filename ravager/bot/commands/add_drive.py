@@ -23,7 +23,8 @@ class AddDrive:
         self.user.user_id = str(update.effective_chat.id)
         drive_options = [
             [InlineKeyboardButton(text="Personal", callback_data="set_default|personal|{}".format(self.user.user_id)),
-             InlineKeyboardButton(text="Shared Drive", callback_data="set_default|shared|{}".format(self.user.user_id))]]
+             InlineKeyboardButton(text="Shared Drive",
+                                  callback_data="set_default|shared|{}".format(self.user.user_id))]]
 
         reply_markup = InlineKeyboardMarkup(drive_options)
         update.message.reply_text(quote=True, text="Set default drive for storing downloaded files",
@@ -91,7 +92,8 @@ class AddDrive:
                 user_id = str(update.effective_chat.id)
                 drive_list, page, pagination_num = self.shared_drive_list(user_id=user_id, page_dict=self.page_dict,
                                                                           next_page_token=self.page_dict[
-                                                                              len(self.page_dict)])
+                                                                              page_num_tracker],
+                                                                          pagination_num=page_num_tracker)
                 shared_drive_keyboard_btns = []
                 for i in drive_list:
                     self.drive_list.append(i) if i not in self.drive_list else self.drive_list
@@ -108,21 +110,24 @@ class AddDrive:
                         for i in drive_list:
                             shared_drive_keyboard_btns.append([InlineKeyboardButton(text=str(i["name"]),
                                                                                     callback_data="shared_drive|shared_drive|{}|{}".format(
-                                                                                        self.user.user_id, str(i["id"])))])
+                                                                                        self.user.user_id,
+                                                                                        str(i["id"])))])
                         if page[pagination_num] is not None:
                             self.page_dict.update(page)
                             shared_drive_keyboard_btns.append([InlineKeyboardButton(text="Next",
                                                                                     callback_data="shared_drive|next|{}|{}".format(
-                                                                                        self.user.user_id, pagination_num))])
+                                                                                        self.user.user_id,
+                                                                                        pagination_num))])
                         reply_markup = InlineKeyboardMarkup(shared_drive_keyboard_btns)
                         update.callback_query.edit_message_text(text="Select Shared drives from the list below:",
                                                                 reply_markup=reply_markup)
                         return SHARED_DRIVE_SELECTION
                     else:
-                        page_num_tracker -= 1
+                        # page_num_tracker -= 1
                         shared_drive_keyboard_btns.append([InlineKeyboardButton(text="Next",
                                                                                 callback_data="shared_drive|next|{}|{}".format(
-                                                                                    self.user.user_id, page_num_tracker))])
+                                                                                    self.user.user_id,
+                                                                                    pagination_num))])
 
                 reply_markup = InlineKeyboardMarkup(shared_drive_keyboard_btns)
                 self.drive_list.append(drive_list)
@@ -130,21 +135,25 @@ class AddDrive:
                                                         reply_markup=reply_markup)
                 return SHARED_DRIVE_SELECTION
 
-    def shared_drive_list(self, user_id, page_dict, next_page_token=None):
-        pagination_num = 1
+    def shared_drive_list(self, user_id, page_dict, pagination_num=1, next_page_token=None):
         gc = GoogleController()
         user_refresh_token = UserData(user=self.user).get_user().refresh_token
         google_creds = gc.credentials_handler(refresh_token=str(user_refresh_token))
-        pagination = {}
         if next_page_token is None:
             drive_list, next_page_token = gc.get_shared_drive_list(google_auth_creds=google_creds)
+            #pagination_num = 1
         else:
             drive_list, next_page_token = gc.get_shared_drive_list(google_auth_creds=google_creds,
                                                                    next_page_token=next_page_token)
             pagination_num += 1
 
-        pagination[pagination_num] = next_page_token
-        page_dict = {**pagination}
+        page_dict[pagination_num] = next_page_token
+        if len(list(page_dict.values())) - len(set(list(page_dict.values()))) > 1:
+            first_page = page_dict[1]
+            page_dict.clear()
+            page_dict[1] = first_page
+            pagination_num = 1
+            drive_list, next_page_token = gc.get_shared_drive_list(google_auth_creds=google_creds)
         return drive_list, page_dict, pagination_num
 
     def default_convo_handler(self):
