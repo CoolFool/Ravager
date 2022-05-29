@@ -9,7 +9,7 @@ from ravager.bot.helpers.validators import *
 from ravager.database.helpers.structs import UserStruct
 from ravager.database.users import UserData
 from ravager.services.google.helpers.controller import GoogleController
-from ravager.config import GROUP_PASSWORD, USER_PASSWORD, TIMEZONE
+from ravager.config import GROUP_PASSWORD, USER_PASSWORD, TIMEZONE, ALLOWLIST
 
 
 class Start:
@@ -25,14 +25,14 @@ class Start:
         user.user_id = str(update.effective_chat.id)
         chat_id = str(update.effective_chat.id)
         user = UserData(user).get_user()
-        allowlist_status = os.environ.get("ALLOWLIST")
+
         if not UserData().get_num_of_users() and (str(update.effective_chat.type) == "group" or str(
                 update.effective_chat.type) == "supergroup"):
             update.message.reply_text(quote=True,
                                       text="This bot can't be initialised for the first time in a group or supergroup")
             return END
         if user is None or not user.authorized:
-            if allowlist_status:
+            if ALLOWLIST:
                 if str(update.effective_chat.type) == "group" or str(update.effective_chat.type) == "supergroup":
                     update.message.reply_text(quote=True,
                                               text="Provide your allowlisting password in private chat and proceed "
@@ -57,7 +57,8 @@ class Start:
                                           reply_markup=ForceReply(selective=True))
                 return GET_ALLOWLIST_PASSWD
             else:
-                return SEND_AUTH_URL
+                self.send_auth_url(update, context)
+                return END
         else:
             if str(update.effective_chat.type) == "group" or str(update.effective_chat.type) == "supergroup":
                 update.message.reply_text(quote=True, text="Welcome back {}!".format(update.effective_chat.title))
@@ -111,7 +112,6 @@ class Start:
             UserData(user).set_user()
         else:
             UserData(user).set_user()
-
         return END
 
     def reply_handler(self, update, context):

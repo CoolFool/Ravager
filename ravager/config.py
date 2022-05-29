@@ -33,7 +33,7 @@ try:
     HEROKU_APP = os.getenv("HEROKU_APP", 'False').lower() in ('true', '1', 't')
     KEEP_HEROKU_ALIVE = os.getenv("KEEP_HEROKU_ALIVE", 'False').lower() in ('true', '1', 't')
     HEROKU_API_TOKEN = str(os.getenv("HEROKU_API_TOKEN"))
-    ALLOWLIST = os.getenv("ALLOWLIST", 'True').lower() in ('true', '1', 't')
+    ALLOWLIST = os.getenv("ALLOWLIST", "True").lower() in ('true', '1', 't')
     GROUP_PASSWORD = str(os.getenv("GROUP_PASSWORD"))
     USER_PASSWORD = str(os.getenv("USER_PASSWORD"))
     MAX_TASKS_PER_USER = int(os.environ.get("MAX_TASKS_PER_USER", 2))

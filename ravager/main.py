@@ -114,6 +114,7 @@ def signal_handler(s, frame):
 
 
 def setup():
+    bot.delete_webhook()
     bot.set_webhook(url=WEBHOOK_URL)
     telegram_update_queue = Queue()
     job_queue = JobQueue()
