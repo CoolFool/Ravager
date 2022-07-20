@@ -1,5 +1,5 @@
 #Template from https://github.com/michaeloliverx/python-poetry-docker-example/blob/master/docker/Dockerfile
-FROM --platform=$BUILDPLATFORM python:3.10-slim-buster as python-base
+FROM python:3.10-slim-buster as python-base
 ENV PYTHONUNBUFFERED=1 \
     PYTHONDONTWRITEBYTECODE=1 \
     PIP_NO_CACHE_DIR=off \
