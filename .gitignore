@@ -3,6 +3,7 @@
 .idea/
 ravager/.env
 !/.gitignore
+!/.github
 !/.dockerignore
 ravager/db_test_snippets.py
 ravager/test_snippets.py
