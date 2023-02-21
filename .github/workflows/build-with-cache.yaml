@@ -1,0 +1,30 @@
+name: Test GH Action Docker
+on:
+  - pull_request
+  - push
+jobs:
+  update-readme:
+    runs-on: hazy-1
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - run: docker context create buildctx
+      - run: docker context use buildctx
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+        with:
+          driver-opts: image=moby/buildkit:master
+          endpoint: buildctx
+
+      - name: Build and push
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+          push: false
+          tags: coolfool/app:latest
+          cache-from: |
+            type=s3,region=us-east-1,use_path_style=true,bucket=gha-cache,name=coolfool/ravager:cache,endpoint_url=https://gha-minio.deepsource.icu,access_key_id=rl4vfSvPGfR3Mtju,secret_access_key=CslKZzrYWHn4CS8BGcx1X8UqU2ez5ZRP
+          cache-to: |
+            mode=max,type=s3,region=us-east-1,use_path_style=true,bucket=gha-cache,name=coolfool/ravager:cache,endpoint_url=https://gha-minio.deepsource.icu,access_key_id=rl4vfSvPGfR3Mtju,secret_access_key=CslKZzrYWHn4CS8BGcx1X8UqU2ez5ZRP
